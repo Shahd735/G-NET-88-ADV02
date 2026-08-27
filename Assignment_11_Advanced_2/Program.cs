@@ -47,6 +47,26 @@ internal class Program
 
         #endregion
 
+        #region Task3.2. Transform Products
+        //Console.WriteLine("--- Summary List ---");
+        //List<string> summaries = TransformProducts(catalog, p => $"{p.Name} (${p.Price})");
+        //foreach (var summary in summaries)
+        //{
+        //    Console.WriteLine(summary);
+        //}
+
+
+        //Console.WriteLine("--- Price Labels ---");
+        //List<string> priceLabels = TransformProducts(catalog, p =>
+        //    p.Price > 100 ? $"{p.Name}: Expensive!" : $"{p.Name}: Affordable");
+
+        //foreach (var label in priceLabels)
+        //{
+        //    Console.WriteLine(label);
+        //}
+
+        #endregion
+
     }
 
     static List<Product> SearchProducts(List<Product> products, Func<Product, bool> filter)
@@ -78,6 +98,16 @@ internal class Program
         {
             printAction(product);
         }
+    }
+
+    static List<string> TransformProducts(List<Product> products, Func<Product, string> transformer)
+    {
+        List<string> result = new List<string>();
+        foreach (var product in products)
+        {
+            result.Add(transformer(product));
+        }
+        return result;
     }
 
 }
