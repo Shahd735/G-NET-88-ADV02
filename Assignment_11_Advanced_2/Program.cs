@@ -67,6 +67,17 @@ internal class Program
 
         #endregion
 
+        #region Task3.3. Filter Products 
+        //Console.WriteLine("--- Low-Stock Alert ---");
+        //List<Product> lowStockProducts = FilterProducts(catalog, p => p.Stock < 20);
+
+        //foreach (var p in lowStockProducts)
+        //{
+        //    Console.WriteLine($"[LOW STOCK] {p.Name}: only {p.Stock} left!");
+        //}
+
+        #endregion
+
     }
 
     static List<Product> SearchProducts(List<Product> products, Func<Product, bool> filter)
@@ -106,6 +117,19 @@ internal class Program
         foreach (var product in products)
         {
             result.Add(transformer(product));
+        }
+        return result;
+    }
+
+    static List<Product> FilterProducts(List<Product> products, Predicate<Product> condition)
+    {
+        List<Product> result = new List<Product>();
+        foreach (var product in products)
+        {
+            if (condition(product))
+            {
+                result.Add(product);
+            }
         }
         return result;
     }
