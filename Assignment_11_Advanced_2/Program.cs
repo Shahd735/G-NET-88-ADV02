@@ -37,6 +37,16 @@ internal class Program
         //PrintProducts(clothingUnder100);
         #endregion
 
+        #region Task3.1  Print Reports 
+        //Console.WriteLine("--- Short Report ---");
+        //PrintReport(catalog, p => Console.WriteLine($"{p.Name} - ${p.Price}"));
+
+
+        //Console.WriteLine("--- Detailed Report ---");
+        //PrintReport(catalog, p => Console.WriteLine($"[{p.Category}] {p.Name} | Price: ${p.Price} | Stock: {p.Stock}"));
+
+        #endregion
+
     }
 
     static List<Product> SearchProducts(List<Product> products, Func<Product, bool> filter)
@@ -60,6 +70,14 @@ internal class Program
             Console.WriteLine($"{p.Name} - ${p.Price} (Stock: {p.Stock})");
         }
         Console.WriteLine();
+    }
+
+    static void PrintReport(List<Product> products, Action<Product> printAction)
+    {
+        foreach (var product in products)
+        {
+            printAction(product);
+        }
     }
 
 }
